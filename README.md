@@ -1,22 +1,22 @@
 
 # Project Name
 
-...
+Simple playwright sample
 
 ## Project Description
 
-...
+Throw most simple playwright project - 'Hello world' style
+
 
 ## Motivation
 
-...
+E2e test are super important e.g. for post2video signup flow and playwright is the recommended thechnology but how to start using it ?
 
 ## Key Takeaways
 - [Item 1]
 - [Item 2]
 
 ## Installation
-
 
 ```bash
 pnpm create playwright
@@ -34,15 +34,50 @@ pnpm exec playwright test --debug             # debug mode
 pnpm exec playwright codegen                  # auto-generate tests by recording actions
 ```
 
+You can also use the scripts in package.json
 
+```bash
+"scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:report": "playwright show-report",
+    "test:e2e:codegen": "playwright codegen"
+  },
+
+```
 ## Learning (Days 1-2)
 
 ### Core Concepts
-1. **Locators** — user-facing selectors (getByRole, getByText), not CSS selectors
-2. **Web-First Assertions** — expect() auto-retries, no manual waits
-3. **Actionability** — auto-waiting before click (visible, stable, enabled, not covered)
-4. **Projects** — multi-viewport testing (desktop + mobile) from one config
-5. **Trace Viewer** — step-by-step debugging with DOM snapshots and network
+
+#### 1. Locators
+
+Instead of fragile CSS selectors or XPaths (e.g., `.btn-primary`), Playwright prioritizes **user-facing selectors** like `getByRole('button', { name: 'Submit' })` or `getByText()`. This makes tests more resilient to design changes and ensures your app is accessible.
+
+#### 2. Web-First Assertions
+
+> Playwright’s **`expect()`** assertions (using matchers like `toBeVisible()`) auto-retry for a default of **5 seconds**, while **actions** (like `click()`) and **navigations** (like `goto()`) wait for up to **30 seconds**—ensuring the engine only proceeds once the state is correct without manual `sleep` commands.
+
+
+
+#### 3. Actionability
+
+Before performing an action like `.click()` or `.type()`, Playwright performs a suite of **actionability checks**. It ensures the element is:
+
+* **Attached** to the DOM.
+* **Visible** and **Stable** (not moving).
+* **Enabled** and not obscured by other elements.
+
+#### 4. Projects
+
+You can define multiple **Projects** in a single configuration file. This allows you to run the same test suite across different viewports (Desktop vs. Mobile) and different browser engines (Chromium, Firefox, WebKit) simultaneously.
+
+#### 5. Trace Viewer
+
+The Trace Viewer is a "time-travel" debugging tool. It records every action, providing a full **DOM snapshot**, console logs, and network activity for every step of the test. You can hover over a specific line of code and see exactly what the browser looked like at that millisecond.
+
+---
+
 
 ### Exercises
 - Test against playwright.dev: click "Get started", assert "Installation" heading
@@ -51,16 +86,59 @@ pnpm exec playwright codegen                  # auto-generate tests by recording
 - Run with --trace on, inspect in Trace Viewer
 
 
+## Technologies
+
+* **Playwright** — For end-to-end testing and browser automation.
+* **TypeScript** — Ensuring type-safe tests and better developer experience.
+* **pnpm** — Managing dependencies and executing scripts efficiently in a monorepo context.
+* **Playwright Test for VSCode** — Microsoft’s official extension used for locator debugging, watch mode, and integrated trace viewing.
+
 
 ## Code Structure
 
-...
+### test folder : test
+Here you put the test files 
+
+
+### test file : example.test.ts
+Here you write the tests
+
+If you are familier with puppeteer and vitest \ jest you will find it very familier
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Playwright/);
+});
+
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Get started' }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+});
+
+```
+
+### config file : playwright.config.ts
+...........
 
 ## Demo
 
-**First run**
+**First run (tag 0.1)**
 
 ![first run](./figs/first-run.png)
+
+## Open issue
+- check how the playwright test for vscode can help me (check maybe https://www.youtube.com/watch?v=5XIZPqKkdBA)
+- in 'get started link' it navigate to other page - home much time he wait ?
 
 ## Points of Interest
 - [Item 1]
