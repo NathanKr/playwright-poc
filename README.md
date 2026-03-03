@@ -80,8 +80,7 @@ The Trace Viewer is a "time-travel" debugging tool. It records every action, pro
 
 
 ### Exercises
-- Test against playwright.dev: click "Get started", assert "Installation" heading
-- No CSS selectors, no waitForTimeout, no waitForSelector
+- Test against playwright.dev: click "Get started", assert "Installation" heading . No CSS selectors, no waitForTimeout, no waitForSelector
 - Add mobile project to config, run same test in both viewports
 - Run with --trace on, inspect in Trace Viewer
 
@@ -127,14 +126,79 @@ test('get started link', async ({ page }) => {
 
 ```
 
-### config file : playwright.config.ts
-...........
+
+### `playwright.config.ts`
+
+Main config file.
+Defines projects (desktop/mobile), timeouts, and test settings.
+
+```typescript
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './test',
+  /* Run tests in files in parallel */
+  fullyParallel: true,
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  forbidOnly: !!process.env.CI,
+  /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: 'html',
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  use: {
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: 'on-first-retry',
+  },
+
+  /* Configure projects for major browsers */
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+
+  ],
+
+});
+
+```
+
+### `playwright-report/`
+
+Auto-generated HTML report after running tests.
+Open with:
+
+```bash
+npx playwright show-report
+```
+
+Contains test results and traces.
+Should be gitignored.
+
+
 
 ## Demo
 
 **First run (tag 0.1)**
 
 ![first run](./figs/first-run.png)
+
+**playwright-report**
+Notice : chromium , firefox and webkit
+![test report](./figs/test-report.png)
 
 ## Open issue
 - check how the playwright test for vscode can help me (check maybe https://www.youtube.com/watch?v=5XIZPqKkdBA)
