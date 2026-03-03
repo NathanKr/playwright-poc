@@ -12,8 +12,11 @@ A minimal Playwright project for absolute beginners (zero Playwright experience)
 E2e test are super important e.g. for post2video signup flow and playwright is the recommended thechnology but how to start using it ?
 
 ## Key Takeaways
-- [Item 1]
-- [Item 2]
+
+* **Kill the `sleep()` Command**: Never use manual timeouts again. Playwright’s **Web-First Assertions** automatically retry for up to 5 seconds and check for "Actionability" (visible, stable, enabled) before every click.
+* **Debug with "Time-Travel"**: Don't guess why a test failed. Use **UI Mode** or the **Trace Viewer** to hover over your code and see a full DOM snapshot, console logs, and network activity for every millisecond of the run.
+* **Locate Like a Human**: Stop using fragile CSS selectors like `.btn-primary`. Use **User-Facing Locators** (e.g., `getByRole('button', { name: 'Submit' })`) to make tests resilient to design changes and accessible by default.
+
 
 ## Installation
 
@@ -188,17 +191,29 @@ Should be gitignored.
 
 ## Demo
 
-**First run (tag 0.1)**
+### playwright test
+
+```bash
+pnpm test:e2e
+```
 
 ![first run](./figs/first-run.png)
 
 **playwright-report**
 
+```bash
+pnpm test:e2e:report
+```
+
 Notice : chromium , firefox and webkit appear here because they are configured in projects under the config file
 
 ![test report](./figs/test-report.png)
 
-**playwright test --ui**
+### playwright test --ui
+
+```bash
+pnpm test:e2e:ui
+```
 
 This launches an **interactive desktop dashboard** that allows you to run tests, "time-travel" through DOM snapshots of every step, and live-pick resilient locators while you write your code.
 
@@ -208,8 +223,18 @@ This launches an **interactive desktop dashboard** that allows you to run tests,
 
 Norice here the second test is marked so we can see the browser for the second test
 
-![test ui marked](./figs/test-u-test-marked.png)
+![test ui marked](./figs/test-ui-marked.png)
 
+
+### playwright test --debug
+
+```bash
+pnpm test:e2e:debug
+```
+
+This runs your tests in **debug mode**, opening the browser in headed mode with the Playwright Inspector so you can step through the test, pause execution, inspect locators, and see what’s happening in real time.
+
+![test ui debug](./figs/test-debug.png)
 
 ## References
 - [playwright.dev](https://playwright.dev/)
