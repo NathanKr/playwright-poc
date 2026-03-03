@@ -9,7 +9,8 @@ A minimal Playwright project for absolute beginners (zero Playwright experience)
 
 ## Motivation
 
-E2e test are super important e.g. for post2video signup flow and playwright is the recommended thechnology but how to start using it ?
+E2E tests are essential for real user flows like the post2video signup. Playwright is the recommended technology — but how do you get started?
+
 
 ## Key Takeaways
 
@@ -50,6 +51,8 @@ You can also use the scripts in package.json
 ```
 
 ## Playwright Core Concepts
+
+Here are the five core concepts you need to understand to use Playwright effectively:
 
 ### 1. Locators
 
@@ -93,6 +96,8 @@ The Trace Viewer is a "time-travel" debugging tool. It records every action, pro
 * **pnpm** — Managing dependencies and executing scripts efficiently in a monorepo context.
 
 ## Code Structure
+
+Here are the most noticeable parts of the project structure:
 
 ### test folder : test
 Here you put the test files 
