@@ -46,21 +46,20 @@ You can also use the scripts in package.json
   },
 
 ```
-## Learning (Days 1-2)
 
-### Core Concepts
+## Playwright Core Concepts
 
-#### 1. Locators
+### 1. Locators
 
 Instead of fragile CSS selectors or XPaths (e.g., `.btn-primary`), Playwright prioritizes **user-facing selectors** like `getByRole('button', { name: 'Submit' })` or `getByText()`. This makes tests more resilient to design changes and ensures your app is accessible.
 
-#### 2. Web-First Assertions
+### 2. Web-First Assertions
 
 Playwright’s **`expect()`** assertions (using matchers like `toBeVisible()`) auto-retry for a default of **5 seconds**, while **actions** (like `click()`) and **navigations** (like `goto()`) wait for up to **30 seconds**—ensuring the engine only proceeds once the state is correct without manual `sleep` commands.
 
 
 
-#### 3. Actionability
+### 3. Actionability
 
 Before performing an action like `.click()` or `.type()`, Playwright performs a suite of **actionability checks**. It ensures the element is:
 
@@ -68,11 +67,11 @@ Before performing an action like `.click()` or `.type()`, Playwright performs a 
 * **Visible** and **Stable** (not moving).
 * **Enabled** and not obscured by other elements.
 
-#### 4. Projects
+### 4. Projects
 
 You can define multiple **Projects** in a single configuration file. This allows you to run the same test suite across different viewports (Desktop vs. Mobile) and different browser engines (Chromium, Firefox, WebKit) simultaneously.
 
-#### 5. Trace Viewer
+### 5. Trace Viewer
 
 The Trace Viewer is a "time-travel" debugging tool. It records every action, providing a full **DOM snapshot**, console logs, and network activity for every step of the test. You can hover over a specific line of code and see exactly what the browser looked like at that millisecond.
 
@@ -197,7 +196,8 @@ Should be gitignored.
 ![first run](./figs/first-run.png)
 
 **playwright-report**
-Notice : chromium , firefox and webkit
+Notice : chromium , firefox and webkit appear here because they are configured in projects under the config file
+
 ![test report](./figs/test-report.png)
 
 ## Open issue
