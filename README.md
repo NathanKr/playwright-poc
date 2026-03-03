@@ -5,8 +5,7 @@ Simple playwright sample
 
 ## Project Description
 
-Throw most simple playwright project - 'Hello world' style
-
+A minimal Playwright project for absolute beginners (zero Playwright experience)
 
 ## Motivation
 
@@ -198,6 +197,18 @@ Should be gitignored.
 Notice : chromium , firefox and webkit appear here because they are configured in projects under the config file
 
 ![test report](./figs/test-report.png)
+
+**playwright test --ui**
+
+This launches an **interactive desktop dashboard** that allows you to run tests, "time-travel" through DOM snapshots of every step, and live-pick resilient locators while you write your code.
+
+
+![test ui](./figs/test-ui.png)
+
+
+Norice here the second test is marked so we can see the browser for the second test
+
+![test ui marked](./figs/test-u-test-marked.png)
 
 
 ## References
