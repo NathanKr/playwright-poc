@@ -56,7 +56,7 @@ Instead of fragile CSS selectors or XPaths (e.g., `.btn-primary`), Playwright pr
 
 #### 2. Web-First Assertions
 
-> Playwright’s **`expect()`** assertions (using matchers like `toBeVisible()`) auto-retry for a default of **5 seconds**, while **actions** (like `click()`) and **navigations** (like `goto()`) wait for up to **30 seconds**—ensuring the engine only proceeds once the state is correct without manual `sleep` commands.
+Playwright’s **`expect()`** assertions (using matchers like `toBeVisible()`) auto-retry for a default of **5 seconds**, while **actions** (like `click()`) and **navigations** (like `goto()`) wait for up to **30 seconds**—ensuring the engine only proceeds once the state is correct without manual `sleep` commands.
 
 
 
