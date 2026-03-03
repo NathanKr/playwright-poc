@@ -89,8 +89,6 @@ The Trace Viewer is a "time-travel" debugging tool. It records every action, pro
 * **Playwright** — For end-to-end testing and browser automation.
 * **TypeScript** — Ensuring type-safe tests and better developer experience.
 * **pnpm** — Managing dependencies and executing scripts efficiently in a monorepo context.
-* **Playwright Test for VSCode** — Microsoft’s official extension used for locator debugging, watch mode, and integrated trace viewing.
-
 
 ## Code Structure
 
@@ -196,18 +194,11 @@ Should be gitignored.
 ![first run](./figs/first-run.png)
 
 **playwright-report**
+
 Notice : chromium , firefox and webkit appear here because they are configured in projects under the config file
 
 ![test report](./figs/test-report.png)
 
-## Open issue
-- check how the playwright test for vscode can help me (check maybe https://www.youtube.com/watch?v=5XIZPqKkdBA)
-- in 'get started link' it navigate to other page - home much time he wait ?
-
-## Points of Interest
-- [Item 1]
-- [Item 2]
 
 ## References
-- [Link/Reference 1]
-- [Link/Reference 2]
+- [playwright.dev](https://playwright.dev/)
