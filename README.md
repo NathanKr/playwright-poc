@@ -9,7 +9,7 @@ A minimal Playwright project for absolute beginners (zero Playwright experience)
 
 ## Motivation
 
-E2E tests are essential for real user flows like the post2video signup. Playwright is the recommended technology — but how do you get started?
+E2E tests are essential for real user flows like the post2video.com signup. Playwright is the recommended technology — but how do you get started?
 
 
 ## Key Takeaways
