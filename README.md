@@ -39,7 +39,7 @@ pnpm exec playwright codegen                  # auto-generate tests by recording
 
 You can also use the scripts in package.json
 
-```bash
+```json
 "scripts": {
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
@@ -106,7 +106,7 @@ Here you put the test files
 ### test file : example.test.ts
 Here you write the tests
 
-If you are familier with puppeteer and vitest \ jest you will find it very familier
+If you are familiar with puppeteer and vitest \ jest you will find it very familiar
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -186,7 +186,7 @@ Auto-generated HTML report after running tests.
 Open with:
 
 ```bash
-npx playwright show-report
+pnpm test:e2e:report
 ```
 
 Contains test results and traces.
@@ -226,7 +226,7 @@ This launches an **interactive desktop dashboard** that allows you to run tests,
 ![test ui](./figs/test-ui.png)
 
 
-Norice here the second test is marked so we can see the browser for the second test
+Notice here the second test is marked so we can see the browser for the second test
 
 ![test ui marked](./figs/test-ui-marked.png)
 
