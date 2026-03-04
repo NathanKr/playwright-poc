@@ -14,7 +14,7 @@ E2E tests are essential for real user flows like the post2video.com signup. Play
 
 ## Key Takeaways
 
-* **Kill the `sleep()` Command**: Never use manual timeouts again. Playwright’s **Web-First Assertions** automatically retry for up to 5 seconds and check for "Actionability" (visible, stable, enabled) before every click.
+* **Kill the `sleep()` Command**: Never use manual timeouts again. Playwright’s **Web-First Assertions** automatically retry for up to 5 seconds, and **Actions** like `.click()` auto-wait up to 30 seconds with built-in "Actionability" checks (visible, stable, enabled).
 * **Debug with "Time-Travel"**: Don't guess why a test failed. Use **UI Mode** or the **Trace Viewer** to hover over your code and see a full DOM snapshot, console logs, and network activity for every millisecond of the run.
 * **Locate Like a Human**: Stop using fragile CSS selectors like `.btn-primary`. Use **User-Facing Locators** (e.g., `getByRole('button', { name: 'Submit' })`) to make tests resilient to design changes and accessible by default.
 
