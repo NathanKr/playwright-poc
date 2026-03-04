@@ -196,6 +196,8 @@ Should be gitignored.
 
 ## Demo
 
+Here is what running each command looks like
+
 ### playwright test
 
 ```bash
